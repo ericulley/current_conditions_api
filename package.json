@@ -1,0 +1,36 @@
+{
+  "name": "current_conditions_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "tsc -w",
+    "dev": "nodemon dist/index.js",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericulley/current_conditions_api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericulley/current_conditions_api/issues"
+  },
+  "homepage": "https://github.com/ericulley/current_conditions_api#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.37",
+    "@types/pg": "^7.14.11",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
