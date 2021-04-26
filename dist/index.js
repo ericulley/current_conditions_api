@@ -52,7 +52,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { id } = req.params;
             const { editReport } = req.body;
-            const updatePost = db_1.default.query("UPDATE general_reports SET report = $1 WHERE id = $2", [editReport, id]);
+            const updatePost = db_1.default.query("UPDATE general_reports SET report = $1, updated_at = $2 WHERE id = $3", [editReport, Date(), id]);
             res.json("---Post was Updated---");
         }
         catch (err) {
