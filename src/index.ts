@@ -21,7 +21,6 @@ const main = async () => {
         try {
             const { genReport } = req.body
             const newReport = await pool.query(`INSERT INTO general_reports (report, created_at) VALUES ($1, $2) RETURNING *`, [genReport, Date()])
-            console.log(newReport)
             res.json(newReport.rows[0])
         } catch (err) {
             console.error(err.message)
@@ -43,7 +42,7 @@ const main = async () => {
         try {
             const { id } = req.params
             const { editReport } = req.body
-            const updatePost = pool.query("UPDATE general_reports SET report = $1 WHERE post_id = $2", [editReport, id])
+            const updatePost = pool.query("UPDATE general_reports SET report = $1 WHERE id = $2", [editReport, id])
             res.json("---Post was Updated---")
         } catch (err) {
             console.error(err.message)
@@ -54,7 +53,7 @@ const main = async () => {
     app.delete('/reports/:id', async (req: Request, res: Response) => {
         try {
             const { id } = req.params
-            const deletePost = await pool.query("DELETE FROM general_reports WHERE post_id = $1", [id])
+            const deletePost = await pool.query("DELETE FROM general_reports WHERE id = $1", [id])
             res.json("---Report was Deleted---")
         } catch (err) {
             console.error(err.message)
@@ -64,9 +63,6 @@ const main = async () => {
     app.listen(PORT, () => {
         console.log("listening on port", PORT)
     })
-
-
-
 
 }
 

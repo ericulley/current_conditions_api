@@ -4,6 +4,6 @@ const pg_1 = require("pg");
 const pool = new pg_1.Pool({
     host: 'localhost',
     port: 5432,
-    database: 'wca_conditions',
+    database: 'current_conditions',
 });
 exports.default = pool;

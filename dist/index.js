@@ -31,7 +31,6 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { genReport } = req.body;
             const newReport = yield db_1.default.query(`INSERT INTO general_reports (report, created_at) VALUES ($1, $2) RETURNING *`, [genReport, Date()]);
-            console.log(newReport);
             res.json(newReport.rows[0]);
         }
         catch (err) {
@@ -53,7 +52,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { id } = req.params;
             const { editReport } = req.body;
-            const updatePost = db_1.default.query("UPDATE general_reports SET report = $1 WHERE post_id = $2", [editReport, id]);
+            const updatePost = db_1.default.query("UPDATE general_reports SET report = $1 WHERE id = $2", [editReport, id]);
             res.json("---Post was Updated---");
         }
         catch (err) {
@@ -64,7 +63,7 @@ const main = () => __awaiter(void 0, void 0, void 0, function* () {
     app.delete('/reports/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { id } = req.params;
-            const deletePost = yield db_1.default.query("DELETE FROM general_reports WHERE post_id = $1", [id]);
+            const deletePost = yield db_1.default.query("DELETE FROM general_reports WHERE id = $1", [id]);
             res.json("---Report was Deleted---");
         }
         catch (err) {
